@@ -1,0 +1,24 @@
+tinyArray (10):
+    insert: 33.4 μs
+    append: 87.8 μs
+    insert/append: 0.3804
+smallArray (100):
+    insert: 44.1 μs
+    append: 97.6 μs
+    insert/append: 0.4518
+mediumArray (1000):
+    insert: 200.3 μs
+    append: 157.6 μs
+    insert/append: 1.2709
+largeArray (10000):
+    insert: 8.5774 ms
+    append: 475 μs
+    insert/append: 18.0577
+extraLargeArray (100000):
+    insert: 3.0344746 s
+    append: 6.9147 ms
+    insert/append: 438.8440
+
+From the results, it appears that the unshift method is more time efficient with smaller arrays. However, once the array length reaches near 1000 values in length, the push method appears to become more time efficient and the disparity between the unshift and push methods' time efficiencies only grows beyond that point. The push method seems to scale well as with each increase in array size, the runtime minimally increases. The unshift method does not seem to scale well as with each increase in array size, the runtime substantially increases
+
+The unshift method scales poorly compared to the push method because whereas the push method is simply adding onto the end of the array, the unshift method is inserting new values into the 0th index of the array and shifting all of the following values over one. So for every unshift, the computer is having to go through the entire array and shift the values up one index.
